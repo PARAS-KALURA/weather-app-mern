@@ -27,9 +27,16 @@ const getWeather = async (req, res) => {
      const weatherData =  ({
        city: response.data.name,
        temperature: response.data.main.temp,
+       visibility: response.data.visibility,
        humidity: response.data.main.humidity,
+       speed: response.data.wind.speed,
+       MinTemp: response.data.main.temp_min,
+       feels_like: response.data.main.feels_like,
+       country: response.data.sys.country,
        weather: response.data.weather[0].description
     });
+
+    //res.json(response.data);
 
     cache.set(city, weatherData);
 
